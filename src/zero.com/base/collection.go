@@ -8,6 +8,38 @@ func main() {
     testMap()
 }
 
+func set(){
+    var null struct{}
+
+    set := make(map[string]struct{})
+    set["a"] = null
+}
+
+func testMap1() {
+    type user struct{ name string }
+
+    m := map[int]user{
+        1: {"user1"},
+    }
+    // 当 map 因扩张而重新哈希时，各键值项存储位置都会发生改变。
+    // 因此，map被设计成 not addressable。
+    // 类似 m[1].name 这种期望透过原 value指针修改成员的行为自然会被禁止。
+
+    // m[1].name = "Tom" // Error: cannot assign to m[1].name
+
+    //正确做法是完整替换 value 或使用指针。
+    u := m[1]
+    u.name = "Tom"
+    m[1] = u // 替换 value。
+
+    m2 := map[int]*user{
+        1: &user{"user1"},
+    }
+    m2[1].name = "Jack" // 返回的是指针复制品。透过指针修改原对象是允许的。
+
+}
+
+
 func testMap() {
     a := map[string]string{
         "000":"aaa",
