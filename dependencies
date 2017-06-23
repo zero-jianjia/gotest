@@ -1,0 +1,6 @@
+go get github.com/tools/godep
+
+#mysql
+godep.exe get github.com/go-sql-driver/mysql
+
+github.com/samuel/go-zookeeper
