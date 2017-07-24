@@ -6,9 +6,33 @@ func main() {
     //array()
     //slice()
     testMap()
+
+    //slice1()
 }
 
-func set(){
+func slice1() {
+    type unknow  struct {
+        age int
+    }
+
+    a1 := make([]unknow, 0, 10)
+    //a1 := make([]unknow, 0, 10)
+    a1 = append(a1, unknow{100})
+    u := a1[0]
+    u.age =14
+    fmt.Println(a1[0])
+    //u := (a1[0])
+    //fmt.Println(&u)
+    //fmt.Println(ok)
+    //if ok{
+    //    (u).age = 14
+    //}
+
+    //a1[0].age = 14
+    fmt.Println(&(a1[0]))
+}
+
+func set() {
     var null struct{}
 
     set := make(map[string]struct{})
@@ -39,7 +63,6 @@ func testMap1() {
 
 }
 
-
 func testMap() {
     a := map[string]string{
         "000":"aaa",
@@ -53,9 +76,22 @@ func testMap() {
     monthdays := make(map[string]int)
     monthdays["Feb"] = 29
 
-    v, exist := monthdays["Feb"]
+    v, exist := monthdays["Fef"]
     fmt.Println(v, exist)
     delete(monthdays, "Feb")
+
+    fmt.Println("---------------------------------")
+    montys := make(map[string][]string)
+    //montys["Fef"]=make([]string,0,100)
+    //vv := montys["Fef"]
+    //if len(vv)==0{
+    //    montys["Fef"] = make([]string,0, 512)
+    //    vv = montys["Fef"]
+    //}
+    montys["Fef"] = append(montys["Fef"],"af")
+    montys["Fef"] = append(montys["Fef"],"af123")
+    fmt.Println(montys)
+
 }
 
 func array() {

@@ -69,7 +69,7 @@ func main() {
 }
 
 func test2() {
-    rows, _ := db.Query("SELECT id,updateTime FROM adunit limit 2")
+    rows, _ := db.Query("SELECT * FROM adunit where status = 0 limit 2")
     columns, _ := rows.Columns()  //读出查询出的列字段名
     //fmt.Println(columns)
 
